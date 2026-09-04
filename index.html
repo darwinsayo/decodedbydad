@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <!-- favicon -->
+  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <!-- Title -->
+  <title>Documentation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- =====================================
+    ============   ALL CSS HERE   ============
+    ====================================== -->
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- style css -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="position-relative" data-spy="scroll" data-target="#navbar-spy">
+
+  <div class="main">
+    <div class="documentation_content">
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <h3 class="doc_main_title"><i>Documentation for</i>Qurno - An AstroJS Blog Theme</h3>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-10">
+            <div class="template_info">
+              <p class="mt-2">Created by: <a href="https://themeforest.net/user/platol/portfolio" target="_blank">Platol</a></p>
+              <p>Created Date: 12 Jan 2025</p>
+              <p>Last Update: 12 Jan 2025</p>
+            </div>
+
+            <!-- Files Structure -->
+            <div>
+              <h2 class="mt-5 pt-4 section-heading">Files Structure</h2>
+              <ul>
+                <li><code>theme-files/src/pages</code> - Directory of All Pages</li>
+                <li><code>theme-files/src/layouts</code> - Directory of Layout (Header, Footer, etc)</li>
+                <li><code>theme-files/src/components</code> - Directory of Components Files</li>
+                <li><code>theme-files/src/config</code> - Directory of Config and Important files</li>
+                <li><strong><code>theme-files/src/content</code> - Directory of All Contents</strong></li>
+                <li><code>theme-files/src/utils</code> - Directory of Utility files</li>
+                <li><code>theme-files/src/aseets/</code> - Directory of Images</li>
+                <li><code>theme-files/src/styles</code> - Directory of Styles/SCSS files</li>
+                <li><code>theme-files/tina</code> - Directory of TinaCMS config files</li>
+                <li><code>theme-files/public/scripts</code> - Directory of JS/Script files</li>
+              </ul>
+            </div>
+
+            <!-- installation -->
+            <div>
+              <h2 id="installation" class="mt-5 pt-4 section-heading">Installation</h2>
+              <p>Checkout <a href="https://docs.astro.build/en/install-and-setup/" target="_blank">Official AstroJS Documentation</a> if you need.</p>
+
+              <hr>
+
+              <h4>System Requirements</h4>
+              <ul>
+                <li><strong>Node.js</strong> - <code dir="auto">v18.17.1</code> or <code dir="auto">v20.3.0</code>, <code dir="auto">v22.0.0</code> or higher. ( <code dir="auto">v19</code> and <code dir="auto">v21</code> are not supported.)</li>
+                <li><strong>Text editor</strong> - We recommend <a href="https://code.visualstudio.com/">VS Code</a> with our <a href="https://marketplace.visualstudio.com/items?itemName=astro-build.astro-vscode">Official Astro extension</a>.</li>
+                <li><strong>Terminal</strong> - Astro is accessed through its command-line interface (CLI).</li>
+              </ul>
+
+              <hr>
+
+              <h4>Install dependencies in your project:</h4>
+              <p>Nevigate to <code>`theme-files/`</code> then open terminal and install dependencies by running</p>
+<pre>
+    npm install
+    <span># or</span>
+    yarn install <span> # if you have <a href="https://yarnpkg.com/" target="_blank">Yarn</a> installed</span>
+</pre>
+
+              <hr>
+
+              <h4>Run <code>`npm run dev`</code> or <code>`yarn dev`</code></h4>
+              <p>to start development server in your local machine</p>
+<pre>
+    npm run dev
+    <span># or</span>
+    yarn dev <span> # if you have <a href="https://yarnpkg.com/" target="_blank">Yarn</a> installed</span>
+</pre>
+<p>Now Open <a href="http://localhost:4321" target="_blank">http://localhost:4321</a> with your browser to see the result.</p>
+
+            </div>
+
+            <div>
+              <h2 id="configaration" class="mt-5 pt-4 section-heading">Configaration</h2>
+              <h5>Open <code>`theme-files/src/config/site.config.json`</code></h5>
+              <p>Change Default settings with yours.</p>
+
+<pre><code>
+  {
+    "baseURL" : "https://qurno-astro.vercel.app",
+    "favicon" : "/favicon.png",
+    "basePath": "/",
+    "trailingSlash": false,
+  
+    "logo": {
+      "src" : "/assets/logo.svg",
+      "src_light" : "/assets/logo-white.svg",
+      "alt" : "Qurno",
+      "width" : 115,
+      "height" : 35
+    },
+  
+    "metadata": {
+      "title" : "Qurno - Minimal AstroJS Blog Theme",
+      "description" : "A minimal AstroJS & TailwindCSS Blog Theme",
+      "author" : "Platol",
+      "keywords" : "qurno, minimal, react, astrojs, blog, template, theme",
+      "image" : "https://qurno-astro.vercel.app/assets/ogimage.jpg"
+    },
+  
+    "settings": {
+      "homepage_post_count" : 6,
+      "pagination" : 6,
+      "copyright" : "© 2025 Qurno. All rights reserved."
+    }
+  }
+</code></pre>
+
+              <h2 id="navbar" class="mt-5 pt-4 section-heading">Header Link Update</h2>
+              <h5>Open <code>`theme-files/src/config/menus.json`</code></h5>
+              <p class="mb-0">Customize(Add or Remove) menu Links by Changing the <code>`name`</code> and <code>`link`</code> value</p>
+              <p>You can also add submenu by adding <code>`submenu`</code> array</p>
+<pre><code>
+  {
+    "mainMenu": [
+      {
+        "name": "Home",
+        "link": "#",
+        "submenu": [
+          {
+            "name": "Home 01",
+            "link": "/",
+            "target": "",
+            "rel": ""
+          },
+          ...
+        ]
+      },
+      {
+        "name": "About",
+        "link": "/about",
+        "target": "",
+        "rel": ""
+      },
+      ...
+      {
+        "name": "Pages",
+        "link": "#",
+        "submenu": [
+          {
+            "name": "Archive",
+            "link": "/blog/archive",
+            "target": "",
+            "rel": ""
+          },
+          ...
+        ]
+      },
+      {
+        "name": "Contact",
+        "link": "/contact",
+        "target": "",
+        "rel": ""
+      }
+    ],
+    "footerMenu": [
+      {
+        "name": "Privacy Policy",
+        "link": "/privacy",
+        "target": "",
+        "rel": ""
+      },
+      ...
+    ]
+  }
+</code></pre>
+
+
+              <div class="mt-5 bg-danger p-5 text-center rounded-lg">
+                <h2 class="text-white mb-4">ALL CONTENTS ARE IN MARKDOWN/MDX FORMAT</h2>
+                <a class="bg-white rounded py-2 px-3 text-danger d-inline-block"  href="https://www.markdownguide.org/cheat-sheet/" target="_blank">Markdown Cheat Sheet</a>
+                <a class="bg-white rounded py-2 px-3 text-danger d-inline-block"  href="https://mdxjs.com/" target="_blank">MDX Doc</a>
+              </div>
+
+
+              <h2 id="banner" class="mt-5 pt-4 section-heading">CMS</h2>
+              <h5>Qurno has full support of TinaCMS. Check out <a href="https://tina.io/docs/">TinaCMS Documentation</a></h5>
+              <p class="mb-3">check tina configuration in <code>`theme-files/src/config/tina.config.ts`</code></p>
+
+              <p class="mb-0">update <code>`clientId`</code> <code>`token`</code> value with your TinaCMS Credentials.</p>
+              <p>also update search <code>`indexerToken`</code> value with your</p>
+
+
+              <h2 id="banner" class="mt-5 pt-4 section-heading">Update Content</h2>
+              <iframe width="100%" height="100%" style="aspect-ratio: 16/9;" src="https://www.youtube.com/embed/BTYhnkWPXhk?si=lGnLLt0X2Ilt2FsK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+            <div id="Contact">
+              <h2 class="section-heading">Contact Page content Update</h2>
+              <h5>Update the Contact Page content by editing</h5>
+              <p><code>`theme-files/src/content/pages/contact.mdx`</code> file content.</p>
+
+              <p>Contact form works with <a href="https://formsubmit.co/" target="_blank">https://formsubmit.co/</a></p>
+              <p>Update <code>`contactForm`</code> informations</p>
+              <ul>
+                <li><code>`contact_email: "platoltheme@gmail.com"`</code> <br> update email with your email-address to recive the message directly to your email.</li>
+              </ul>
+
+
+            <div id="css_stc">
+              <h5 class="my-4">Change TailwindCSS config (if you need) from <br> <code>`theme-files/tailwind.config.js`</code></h5>
+
+              <h4 class="mt-5"><b>Changing Font</b></h4>
+              <p class="mb-1">We are using <code>`Astro Font`</code> Library</p>
+              <p class="mb-1">Update the fonts form <code>`theme-files/src/layouts/Layout.astro`</code> file</p>
+              <p>Check the documentation <a href="https://github.com/rishi-raj-jain/astro-font" target="_blank">https://github.com/rishi-raj-jain/astro-font</a></p>
+              
+
+            <div id="changelog">
+              <h2 class="section-heading">Changelog</h2>
+<p><strong>v1.0.0 ⁠— 12 Jan 2025</strong></p>
+<div class="row mb-4"><div class="col-lg-7">
+<pre class="">
+  - Initail Release
+</pre>
+</div><div class="col-lg-5">
+</div></div>
+            </div>
+
+            <div id="sc">
+              <h2 class="section-heading">Sources &amp; Credits</h2>
+              <p>I've used the following images, icons or others as listed.</p>
+              <ul class="source-files">
+                <li><a href="https://docs.astro.build/en/getting-started/" target="_blank">AstroJS</a></li>
+                <li><a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a></li>
+                <li><a href="https://fonts.google.com/" target="_blank">Google Fonts</a></li>
+                <li><a href="https://unsplash.com/" target="_blank">unsplash</a>(Photos)</li>
+                <li><a href="https://www.npmjs.com/package/tailwind-bootstrap-grid" target="_blank">tailwind-bootstrap-grid</li>
+
+
+
+
+
+
+
+
+
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/jquery.min.js" type="text/javascript"></script>
+  <script src="js/plugins.js" type="text/javascript"></script>
+  <script src="js/main.js" type="text/javascript"></script>
+
+</body>
+
+</html>

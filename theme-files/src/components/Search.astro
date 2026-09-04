@@ -1,0 +1,71 @@
+---
+import SearchComponent from "./SearchComponent.jsx";
+
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+import { getTaxonomyWithCounts } from "@src/utils/taxonomy";
+import { humanize, slugify } from "@src/utils/textConverter";
+import AstroImage from "./helpers/AstroImage.astro";
+
+// all posts
+const allPosts: CollectionEntry<"blog">[] = (await getCollection("blog")).sort(
+  (a: CollectionEntry<"blog">, b: CollectionEntry<"blog">) =>
+    b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+// all tags
+const {
+  allItems: allTags,
+  itemCounts: tagCounts 
+} = getTaxonomyWithCounts(allPosts, 'tags');
+
+// all categories
+const {
+  allItems: allCategories,
+  itemCounts: categoryCounts 
+} = getTaxonomyWithCounts(allPosts, 'categories');
+
+// is link active
+const currentPath = Astro.url.pathname;
+const isActive = (link: string) => 
+  currentPath === link || currentPath === link + "/";
+---
+
+<div id="search-block" class="search-block">
+  <div class="container">
+    <SearchComponent client:load posts={allPosts}>
+      {allPosts.map((post) => (
+        <AstroImage src={post.data.image} alt={post.slug} width={190} height={98} format="webp" />
+      ))}
+    </SearchComponent>
+
+    <div class="max-w-3xl">
+      <p class="h4 mb-4">Explorer posts by categories</p>
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 [&_a]:bg-primary/10 [&_a]:dark:bg-black/20 [&_a]:text-dark [&_a]:dark:text-white [&_a]:font-medium [&_a]:px-[14px] [&_a]:py-[5px] [&_a]:text-[13px] [&_a]:sm:text-[15px] [&_a]:rounded-md [&_a]:transition-all [&_a:hover]:bg-primary [&_a:hover]:dark:bg-primary-dark [&_a:hover]:text-white">
+        {allCategories.map((category) => (
+          <a class={`group ${isActive(`/categories/${slugify(category)}`) && "!bg-primary dark:!bg-primary-dark !text-white"}`} href={`/categories/${slugify(category)}`}>
+            {humanize(category)}
+            {categoryCounts[category] > 1 && (
+              <span class={`-mr-px -translate-y-px bg-primary dark:bg-primary-dark text-white rounded-full group-hover:bg-white group-hover:text-primary group-hover:dark:text-primary-dark h-4 sm:h-5 w-4 sm:w-5 inline-grid place-content-center text-xs font-semibold transition-all duration-200 ${isActive(`/categories/${slugify(category)}`) && "!bg-white !text-primary dark:!text-primary-dark"}`}>{categoryCounts[category]}</span>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="mt-10 max-w-3xl">
+      <p class="h4 mb-4">Explorer posts by tags</p>
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3 [&_a]:bg-primary/10 [&_a]:dark:bg-black/20 [&_a]:text-dark [&_a]:dark:text-white [&_a]:font-medium [&_a]:px-[14px] [&_a]:py-[5px] [&_a]:text-[13px] [&_a]:sm:text-[15px] [&_a]:rounded-md [&_a]:transition-all [&_a:hover]:bg-primary [&_a:hover]:dark:bg-primary-dark [&_a:hover]:text-white">
+        {allTags.map((tag) => (
+          <a class={`group ${isActive(`/tags/${slugify(tag)}`) && "!bg-primary !text-white"}`} href={`/tags/${slugify(tag)}`}>
+            {humanize(tag)}
+            {tagCounts[tag] > 1 && (
+              <span class={`-mr-px -translate-y-px bg-primary dark:bg-primary-dark text-white rounded-full group-hover:bg-white group-hover:text-primary group-hover:dark:text-primary-dark h-4 sm:h-5 w-4 sm:w-5 inline-grid place-content-center text-xs font-semibold transition-all duration-200 ${isActive(`/tags/${slugify(tag)}`) && "!bg-white !text-primary dark:!text-primary-dark"}`}>{tagCounts[tag]}</span>
+            )}
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,12 +16,12 @@
   :root{--paper:#121b23; --ink:#eee9dc; --muted:#a2adb6; --bubble:#1c2833; --line:#2f3d49; --teal:#6cc3cb}
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
 body{margin:0;background:var(--paper);color:var(--ink);font:1.125rem/1.65 var(--serif)}
 a{color:inherit}
 :focus-visible{outline:3px solid var(--hi);outline-offset:3px}
 .wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;font-family:var(--sans);font-size:1rem}
+nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:.75rem 0;font-family:var(--sans);font-size:1rem}
 nav b{font-weight:800;letter-spacing:-.01em}
 nav a{text-decoration:none;margin-left:1.25rem}
 nav a:hover{text-decoration:underline}
@@ -77,6 +77,7 @@ nav a.logo em{font-style:normal;font-weight:500;color:var(--muted)}
 .photo figcaption{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin-top:.5rem}
 .ask{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
 .ask svg.mic{width:8rem;height:auto;color:var(--hi)}
+@media (max-width:520px){nav a.logo span{display:none}nav a{margin-left:.9rem}}
 @media (max-width:760px){.ask{grid-template-columns:1fr}.ask svg.mic{width:5rem;order:-1}.hero,.about{grid-template-columns:1fr;gap:2rem}.ep{flex-direction:column;gap:.2rem}}
 @media (prefers-reduced-motion:reduce){.msg.dad{animation:none}html{scroll-behavior:auto}}
 </style>

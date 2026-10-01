@@ -1,747 +1,173 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decoded by Dad | A Family Advice Archive</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts (Playfair Display, Lora, Inter) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Lora', 'serif'],
-                        display: ['"Playfair Display"', 'serif'],
-                    },
-                    colors: {
-                        journal: {
-                            bg: '#FDFBF7',         /* Soft cream paper background */
-                            card: '#FFFDF9',       /* Card background */
-                            border: '#E8E2D5',     /* Subtle warm border */
-                            dark: '#2D231E',       /* Deep espresso text */
-                            muted: '#6E6259',      /* Muted sepia body text */
-                            accent: '#8C5A3C',     /* Warm leather/sepia tone */
-                            accentHover: '#73462C',
-                            sage: '#5B6C5D',       /* Muted sage accent */
-                            daughter: '#A36B76',   /* Dusty rose tag for daughter */
-                            son: '#4A6B82',        /* Slate blue tag for son */
-                            paperHighlight: '#F5EFE6'
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FDFBF7;
-            color: #2D231E;
-            font-family: 'Inter', sans-serif;
-        }
-        .font-display {
-            font-family: 'Playfair Display', serif;
-        }
-        .font-serif {
-            font-family: 'Lora', serif;
-        }
-        /* Custom subtle scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #F5EFE6;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #D1C7B7;
-            border-radius: 3px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #8C5A3C;
-        }
-        .paper-texture {
-            background-image: radial-gradient(#2D231E 0.5px, transparent 0.5px);
-            background-size: 24px 24px;
-            opacity: 0.03;
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Decoded by Dad</title>
+<meta name="description" content="A podcast where Dad answers the real questions his two oldest kids ask about growing up, money, college, and relationships.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M14 2h20a12 12 0 0 1 12 12v12a12 12 0 0 1-12 12H22l-12 9 2-9.5A12 12 0 0 1 2 26V14A12 12 0 0 1 14 2z' fill='%23f3c63d'/%3E%3Cg fill='%2317232e'%3E%3Crect x='9' y='16' width='4' height='8' rx='2'/%3E%3Crect x='16' y='11' width='4' height='18' rx='2'/%3E%3Crect x='23' y='7' width='4' height='26' rx='2'/%3E%3Crect x='30' y='13' width='4' height='14' rx='2'/%3E%3Crect x='37' y='17' width='4' height='6' rx='2'/%3E%3C/g%3E%3C/svg%3E">
+<style>
+:root{
+  --paper:#f1efe9; --ink:#17232e; --muted:#51606c; --hi:#f3c63d; --teal:#1d6b73; --bubble:#fff; --line:#cfcabd;
+  --sans:"Avenir Next","Segoe UI",Helvetica,Arial,sans-serif;
+  --serif:Charter,"Iowan Old Style",Georgia,serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#121b23; --ink:#eee9dc; --muted:#a2adb6; --bubble:#1c2833; --line:#2f3d49; --teal:#6cc3cb}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:1.125rem/1.65 var(--serif)}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hi);outline-offset:3px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.5rem}
+nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;font-family:var(--sans);font-size:1rem}
+nav b{font-weight:800;letter-spacing:-.01em}
+nav a{text-decoration:none;margin-left:1.25rem}
+nav a:hover{text-decoration:underline}
+h1,h2,h3{font-family:var(--sans);line-height:1.05;letter-spacing:-.03em;margin:0}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;padding:3rem 0 5rem}
+h1{font-size:clamp(3rem,8vw,5.5rem);font-weight:900}
+h1 span{background:linear-gradient(transparent 58%,var(--hi) 58% 92%,transparent 92%);padding:0 .08em}
+.lede{margin:1.5rem 0 2rem;max-width:30rem;color:var(--muted)}
+.btn{display:inline-block;font-family:var(--sans);font-weight:700;background:var(--ink);color:var(--paper);padding:.85rem 1.4rem;border-radius:.4rem;text-decoration:none}
+.btn:hover{background:var(--teal);color:#fff}
+.chat{display:flex;flex-direction:column;gap:.9rem;font-family:var(--sans);font-size:1.05rem;line-height:1.45}
+.msg{max-width:88%;padding:.9rem 1.1rem;background:var(--bubble);border:1px solid var(--line);border-radius:1.1rem 1.1rem 1.1rem .2rem}
+.msg small{display:block;color:var(--muted);font-size:.85rem;margin-bottom:.15rem}
+.msg.dad{align-self:flex-end;background:var(--hi);color:#17232e;border-color:var(--hi);border-radius:1.1rem 1.1rem .2rem 1.1rem}
+.msg.dad small{color:#4a4020}
+.msg.dad{animation:in .6s .5s both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+section{padding:4rem 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(2rem,4.5vw,2.8rem);font-weight:850;margin-bottom:1.5rem}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:2rem 2.5rem;margin:0;padding:0;list-style:none}
+.topics h3{font-size:1.4rem;margin-bottom:.4rem}
+.topics p{margin:0;color:var(--muted);font-size:1rem}
+.eps{display:grid;gap:1rem;max-width:44rem}
+.ep{display:flex;gap:1.25rem;align-items:baseline;padding:1rem 0;border-bottom:1px dashed var(--line)}
+.ep time{font-family:var(--sans);font-weight:700;color:var(--teal);min-width:7rem}
+.ep h3{font-size:1.25rem;font-weight:700;letter-spacing:-.01em}
+.ep p{margin:.2rem 0 0;color:var(--muted);font-size:1rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.about p{margin:0 0 1rem}
+.ask{background:var(--ink);color:var(--paper);border-radius:.6rem;padding:2.5rem}
+.ask h2{margin-bottom:.75rem}
+.ask .btn{background:var(--hi);color:#17232e;margin-top:1rem}
+.ask .btn:hover{background:#fff}
+footer{padding:2rem 0 3rem;font-family:var(--sans);font-size:.95rem;color:var(--muted);border-top:1px solid var(--line)}
+nav a.logo{display:flex;align-items:center;gap:.6rem;margin-left:0;font-size:1.2rem;letter-spacing:-.02em;font-weight:850}
+nav a.logo:hover{text-decoration:none}
+nav a.logo svg{width:2.6rem;height:2.6rem;flex:none}
+nav a.logo em{font-style:normal;font-weight:500;color:var(--muted)}
+.wave{display:flex;align-items:center;justify-content:space-between;height:5rem;gap:3px;margin:0 0 1rem}
+.wave i{flex:1;background:var(--teal);border-radius:2px;opacity:.85}
+.wave i:nth-child(7n){background:var(--hi);opacity:1}
+.photo{margin:0 0 2.5rem}
+.photo img,.photo .ph{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:.6rem;display:block}
+.photo .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;border:2px dashed var(--line);color:var(--muted);font-family:var(--sans);text-align:center;padding:1rem}
+.photo .ph svg{width:3rem;height:3rem}
+.photo figcaption{font-family:var(--sans);font-size:.9rem;color:var(--muted);margin-top:.5rem}
+.ask{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center}
+.ask svg.mic{width:8rem;height:auto;color:var(--hi)}
+@media (max-width:760px){.ask{grid-template-columns:1fr}.ask svg.mic{width:5rem;order:-1}.hero,.about{grid-template-columns:1fr;gap:2rem}.ep{flex-direction:column;gap:.2rem}}
+@media (prefers-reduced-motion:reduce){.msg.dad{animation:none}html{scroll-behavior:auto}}
+</style>
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-amber-100 selection:text-journal-dark relative">
+<body>
+<div class="wrap">
+  <nav>
+    <a class="logo" href="#" aria-label="Decoded by Dad, back to top">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M14 2h20a12 12 0 0 1 12 12v12a12 12 0 0 1-12 12H22l-12 9 2-9.5A12 12 0 0 1 2 26V14A12 12 0 0 1 14 2z" fill="#f3c63d"/>
+        <g fill="#17232e"><rect x="9" y="16" width="4" height="8" rx="2"/><rect x="16" y="11" width="4" height="18" rx="2"/><rect x="23" y="7" width="4" height="26" rx="2"/><rect x="30" y="13" width="4" height="14" rx="2"/><rect x="37" y="17" width="4" height="6" rx="2"/></g>
+      </svg>
+      <span>Decoded <em>by Dad</em></span>
+    </a>
+    <div><a href="#topics">Topics</a><a href="#episodes">Episodes</a><a href="#about">About</a><a href="#ask">Ask</a></div>
+  </nav>
 
-    <!-- Subtle texture overlay -->
-    <div class="fixed inset-0 pointer-events-none paper-texture z-0"></div>
-
-    <!-- Navigation Bar -->
-    <header class="relative z-10 border-b border-journal-border bg-journal-bg/90 backdrop-blur-md sticky top-0">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-9 h-9 rounded-full bg-journal-accent text-white flex items-center justify-center text-sm font-serif italic shadow-sm group-hover:scale-105 transition-transform">
-                    D
-                </div>
-                <div>
-                    <span class="font-display text-xl font-bold tracking-tight text-journal-dark block leading-none">
-                        Decoded <span class="italic font-normal text-journal-accent">by Dad</span>
-                    </span>
-                    <span class="text-[11px] text-journal-muted font-serif italic tracking-wide">A family archive of conversations</span>
-                </div>
-            </a>
-
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex items-center gap-6 text-xs font-medium tracking-wide uppercase text-journal-muted">
-                <a href="#featured" class="hover:text-journal-accent transition-colors">Latest Talk</a>
-                <a href="#archive" class="hover:text-journal-accent transition-colors">The Archive</a>
-                <a href="#letter" class="hover:text-journal-accent transition-colors">Dad's Letter</a>
-                <a href="#ask" class="hover:text-journal-accent transition-colors">Ask Dad</a>
-            </nav>
-
-            <a href="#ask" class="text-xs font-semibold px-4 py-2 rounded-full border border-journal-accent/30 text-journal-accent hover:bg-journal-accent hover:text-white transition-all">
-                Leave a Question
-            </a>
-        </div>
-    </header>
-
-    <main class="relative z-10 flex-grow">
-        <!-- Hero Section -->
-        <section class="py-12 sm:py-20 px-4 sm:px-6 max-w-4xl mx-auto text-center border-b border-journal-border">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-journal-paperHighlight border border-journal-border text-journal-muted text-xs font-serif italic mb-6">
-                <i class="fa-regular fa-bookmark text-journal-accent"></i>
-                <span>Recorded talks with Maya (17) & Sam (19)</span>
-            </div>
-
-            <h1 class="font-display text-3xl sm:text-5xl font-bold text-journal-dark leading-tight tracking-tight mb-6">
-                Real conversations, unvarnished advice, and life lessons passed down at the kitchen table.
-            </h1>
-
-            <p class="font-serif text-journal-muted text-base sm:text-lg max-w-2xl mx-auto leading-relaxed italic mb-10">
-                "When my daughter turned 17 and my son turned 19, their questions shifted from homework to real life—apartments, credit, hard choices, and growing up. I started writing down our talks so they'd always have them."
-            </p>
-
-            <!-- Search & Filter Bar -->
-            <div class="max-w-xl mx-auto relative">
-                <div class="relative flex items-center">
-                    <i class="fa-solid fa-magnifying-glass absolute left-4 text-journal-muted text-sm"></i>
-                    <input 
-                        type="text" 
-                        id="journalSearchInput" 
-                        placeholder="Search conversations (e.g., credit cards, car oil, career, stress)..." 
-                        onkeyup="handleSearch(event)"
-                        class="w-full pl-11 pr-10 py-3 rounded-full bg-journal-card border border-journal-border focus:border-journal-accent focus:ring-1 focus:ring-journal-accent text-sm text-journal-dark placeholder-journal-muted/70 outline-none shadow-sm transition-all"
-                    >
-                    <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-4 text-journal-muted hover:text-journal-dark text-xs">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Featured Dialogue of the Week -->
-        <section id="featured" class="py-12 sm:py-16 px-4 sm:px-6 max-w-4xl mx-auto border-b border-journal-border">
-            <div class="flex items-center justify-between mb-8">
-                <div>
-                    <span class="text-xs uppercase font-semibold tracking-widest text-journal-accent block mb-1">Entry of the Week</span>
-                    <h2 class="font-display text-2xl sm:text-3xl font-bold text-journal-dark">Late Night Talk: "How Do I Know I'm Making the Right Decision?"</h2>
-                </div>
-                <span class="text-xs text-journal-muted font-serif italic hidden sm:inline">October 12, 2026</span>
-            </div>
-
-            <!-- Styled Journal Page Container -->
-            <div class="bg-journal-card border border-journal-border rounded-2xl p-6 sm:p-10 shadow-sm relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-2 h-full bg-journal-accent"></div>
-
-                <!-- Dialogue Header -->
-                <div class="flex items-center gap-3 pb-6 mb-6 border-b border-journal-border text-xs text-journal-muted">
-                    <span class="px-2.5 py-1 rounded-md bg-journal-daughter/10 text-journal-daughter font-semibold">Maya (17)</span>
-                    <span>•</span>
-                    <span>Topic: Life Choices & Future Anxiety</span>
-                    <span>•</span>
-                    <span class="italic font-serif">5 min read</span>
-                </div>
-
-                <!-- Conversation Body Excerpt -->
-                <div class="space-y-6 font-serif text-journal-dark leading-relaxed">
-                    
-                    <!-- Maya Question -->
-                    <div class="bg-journal-paperHighlight/60 p-4 rounded-xl border border-journal-border/60">
-                        <p class="text-xs font-semibold uppercase text-journal-daughter tracking-wider mb-1 font-sans">Maya asked:</p>
-                        <p class="italic text-slate-800">
-                            "Dad, everyone at school seems to know exactly what college major they want and what job they'll have at 25. I feel like I'm picking blindly. What if I make a huge mistake?"
-                        </p>
-                    </div>
-
-                    <!-- Dad Answer -->
-                    <div class="pl-4 sm:pl-6 border-l-2 border-journal-accent/40 space-y-3">
-                        <p class="text-xs font-semibold uppercase text-journal-accent tracking-wider font-sans">Dad's Response:</p>
-                        <p>
-                            First off, kiddo: <strong>nobody actually has it figured out at 17.</strong> Some people are just better at faking confidence.
-                        </p>
-                        <p>
-                            When I was your age, I thought life was a straight track. You pick a train, get on, and stay on it. But adulthood is actually a series of small, reversible experiments. You don't need a 10-year masterplan; you just need to pick the next step that feels honest and interesting to you.
-                        </p>
-                        <p>
-                            If you pick a path and realize 2 years in that it's wrong for you, you haven't wasted time—you've collected data on what you <em>don't</em> want. That's just as valuable.
-                        </p>
-                    </div>
-
-                    <!-- Takeaway Note -->
-                    <div class="mt-6 pt-4 border-t border-journal-border/80 flex items-start gap-3 text-xs font-sans text-journal-muted">
-                        <i class="fa-solid fa-quote-left text-journal-accent text-base mt-0.5"></i>
-                        <div>
-                            <span class="font-bold text-journal-dark block mb-0.5">Kitchen Table Rule #14:</span>
-                            Optimization is for machinery, not human lives. Make the best decision with the info you have today, and trust yourself to handle whatever happens tomorrow.
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Read Full Button -->
-                <div class="mt-8 text-right">
-                    <button onclick="openModalById(101)" class="inline-flex items-center gap-2 text-xs font-bold text-journal-accent hover:text-journal-accentHover font-sans tracking-wide uppercase transition-colors">
-                        Read Full Transcript <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Archive Grid -->
-        <section id="archive" class="py-12 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto">
-            
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-                <div>
-                    <span class="text-xs uppercase font-semibold tracking-widest text-journal-accent block mb-1">The Digital Journal</span>
-                    <h2 class="font-display text-2xl sm:text-4xl font-bold text-journal-dark">Browse Past Conversations</h2>
-                </div>
-
-                <!-- Filter Pills -->
-                <div class="flex items-center gap-1.5 overflow-x-auto pb-2 sm:pb-0 no-scrollbar">
-                    <button onclick="setFilter('all')" class="filter-btn active text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-dark bg-journal-dark text-white transition-all shrink-0">
-                        All Talks
-                    </button>
-                    <button onclick="setFilter('daughter')" class="filter-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-border bg-journal-card text-journal-muted hover:border-journal-daughter hover:text-journal-daughter transition-all shrink-0">
-                        Maya (17)
-                    </button>
-                    <button onclick="setFilter('son')" class="filter-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-border bg-journal-card text-journal-muted hover:border-journal-son hover:text-journal-son transition-all shrink-0">
-                        Sam (19)
-                    </button>
-                    <button onclick="setFilter('practical')" class="filter-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-border bg-journal-card text-journal-muted hover:border-journal-accent hover:text-journal-accent transition-all shrink-0">
-                        Practical Skills
-                    </button>
-                    <button onclick="setFilter('life')" class="filter-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-border bg-journal-card text-journal-muted hover:border-journal-accent hover:text-journal-accent transition-all shrink-0">
-                        Life & Growth
-                    </button>
-                </div>
-            </div>
-
-            <!-- Archive Cards Grid -->
-            <div id="archiveGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Javascript will dynamically render archive cards -->
-            </div>
-
-            <!-- Empty State -->
-            <div id="noResultsState" class="hidden text-center py-12 bg-journal-card rounded-2xl border border-journal-border my-6">
-                <i class="fa-regular fa-compass text-3xl text-journal-muted mb-3 block"></i>
-                <h3 class="font-display text-lg font-bold text-journal-dark mb-1">No conversation found</h3>
-                <p class="text-xs text-journal-muted max-w-sm mx-auto mb-4 font-serif">Dad hasn't logged a talk on this exact topic yet. Feel free to leave a question below!</p>
-                <button onclick="clearSearch()" class="text-xs font-semibold px-4 py-2 rounded-full bg-journal-accent text-white">
-                    Show All Conversations
-                </button>
-            </div>
-
-        </section>
-
-        <!-- Personal Note / About Section -->
-        <section id="letter" class="py-12 sm:py-20 px-4 sm:px-6 max-w-3xl mx-auto border-t border-journal-border">
-            <div class="bg-journal-card border border-journal-border rounded-3xl p-6 sm:p-12 shadow-sm relative">
-                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-journal-border">
-                    <div class="w-12 h-12 rounded-full bg-journal-paperHighlight border border-journal-border flex items-center justify-center font-serif italic text-journal-accent text-xl font-bold">
-                        M
-                    </div>
-                    <div>
-                        <h3 class="font-display text-lg font-bold text-journal-dark">A Letter From Dad</h3>
-                        <p class="text-xs text-journal-muted font-serif italic">Why this archive exists for Maya & Sam</p>
-                    </div>
-                </div>
-
-                <div class="font-serif text-journal-dark space-y-4 text-sm sm:text-base leading-relaxed">
-                    <p>
-                        When Maya turned 17 and started prepping for college, and Sam turned 19 and moved into his first shared apartment, our phone calls changed.
-                    </p>
-                    <p>
-                        Suddenly, we weren't just talking about weekend plans or soccer practice. They were asking how to deal with an uncommunicative roommate, how credit card interest works, what to say when you make a mistake at work, and how to check car tire tread before a road trip.
-                    </p>
-                    <p>
-                        I realized two things: first, adulthood hits fast and without a manual. Second, spoken advice vanishes quickly, but written words stick. I started typing up our phone calls, kitchen table discussions, and voice notes into this digital archive.
-                    </p>
-                    <p>
-                        If you stumbled upon this archive—whether you're 18, 22, or 30—I hope these unvarnished talks give you some clarity and comfort. You're doing better than you think.
-                    </p>
-                    <p class="italic pt-2 text-journal-accent font-medium">
-                        — Dad (Mark)
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- "Ask Dad" Interactive Section -->
-        <section id="ask" class="py-12 sm:py-20 px-4 sm:px-6 max-w-4xl mx-auto border-t border-journal-border">
-            <div class="text-center max-w-xl mx-auto mb-10">
-                <span class="text-xs uppercase font-semibold tracking-widest text-journal-accent block mb-1">Kitchen Table Door Is Open</span>
-                <h2 class="font-display text-2xl sm:text-3xl font-bold text-journal-dark">Ask the Archive</h2>
-                <p class="text-xs sm:text-sm text-journal-muted font-serif italic mt-2">
-                    Have a question about adulting, career, money, or hard choices? Drop a note below for Dad to answer in an upcoming conversation entry.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                
-                <!-- Input Form -->
-                <form id="askForm" onsubmit="handleFormSubmit(event)" class="lg:col-span-7 bg-journal-card border border-journal-border rounded-2xl p-6 space-y-4">
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-journal-dark mb-1.5">Your Name / Pseudonym</label>
-                        <input 
-                            type="text" 
-                            id="askName" 
-                            placeholder="e.g., College Sophomore, Curious 18yo" 
-                            oninput="updatePreview()"
-                            class="w-full px-3.5 py-2.5 rounded-xl border border-journal-border bg-journal-bg text-sm text-journal-dark outline-none focus:border-journal-accent transition-all"
-                        >
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-journal-dark mb-1.5">Who would be asking this?</label>
-                        <select id="askWho" onchange="updatePreview()" class="w-full px-3.5 py-2.5 rounded-xl border border-journal-border bg-journal-bg text-sm text-journal-dark outline-none focus:border-journal-accent transition-all">
-                            <option value="Daughter">Question similar to Daughter's age (17–18)</option>
-                            <option value="Son">Question similar to Son's age (19–20)</option>
-                            <option value="General">General Adulting / Anyone</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-journal-dark mb-1.5">Your Question or Dilemma <span class="text-rose-600">*</span></label>
-                        <textarea 
-                            id="askQuestion" 
-                            rows="4" 
-                            required 
-                            oninput="updatePreview()"
-                            placeholder="e.g., Dad, how do I deal with feeling guilty when saying no to extra shifts at work?" 
-                            class="w-full p-3.5 rounded-xl border border-journal-border bg-journal-bg text-sm text-journal-dark outline-none focus:border-journal-accent transition-all"
-                        ></textarea>
-                    </div>
-
-                    <button type="submit" class="w-full py-3 rounded-xl bg-journal-dark hover:bg-journal-accent text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm">
-                        Submit Question to Dad
-                    </button>
-                </form>
-
-                <!-- Live Note Preview -->
-                <div class="lg:col-span-5 bg-journal-paperHighlight/70 border border-dashed border-journal-border rounded-2xl p-6">
-                    <span class="text-[11px] font-bold uppercase tracking-wider text-journal-muted block mb-3">Live Note Preview</span>
-                    
-                    <div class="space-y-3 font-serif text-xs text-journal-dark">
-                        <div class="flex items-center justify-between text-[10px] text-journal-muted font-sans border-b border-journal-border/60 pb-2">
-                            <span id="previewTag" class="font-bold text-journal-daughter">Maya (17)</span>
-                            <span>Pending Entry</span>
-                        </div>
-                        <p class="italic text-journal-muted" id="previewText">
-                            "Your question will appear here as you type..."
-                        </p>
-                        <div class="pt-2 text-[11px] font-sans text-journal-accent italic">
-                            — Submitted by <span id="previewAuthor" class="font-semibold">Curious Reader</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Success Confirmation Box -->
-            <div id="formSubmittedBox" class="hidden mt-6 p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center text-emerald-900">
-                <i class="fa-solid fa-circle-check text-2xl text-emerald-600 mb-2"></i>
-                <h4 class="font-display font-bold text-base mb-1">Question Logged into the Archive</h4>
-                <p class="text-xs font-serif italic text-emerald-800">Dad has received your note and will draft an answer in an upcoming conversation entry!</p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Modal Dialogue Reader -->
-    <div id="dialogueModal" class="fixed inset-0 z-50 hidden bg-journal-dark/60 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6" onclick="closeModalOnBackdrop(event)">
-        <div id="modalContainer" class="bg-journal-card border border-journal-border rounded-3xl max-w-2xl w-full p-6 sm:p-10 shadow-2xl relative my-8 max-h-[85vh] overflow-y-auto transform scale-95 opacity-0 transition-all duration-200">
-            
-            <button onclick="closeModal()" class="absolute top-6 right-6 w-8 h-8 rounded-full bg-journal-paperHighlight text-journal-muted hover:text-journal-dark flex items-center justify-center text-sm transition-colors">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-
-            <div id="modalContent">
-                <!-- Javascript populates modal content dynamically -->
-            </div>
-
-            <div class="mt-8 pt-6 border-t border-journal-border flex items-center justify-between text-xs text-journal-muted font-sans">
-                <span class="italic font-serif">Decoded by Dad Family Log</span>
-                <button onclick="closeModal()" class="px-4 py-2 rounded-full bg-journal-dark text-white font-semibold hover:bg-journal-accent transition-colors">
-                    Close Transcript
-                </button>
-            </div>
-        </div>
+  <header class="hero">
+    <div>
+      <h1>Real questions. <span>Straight answers.</span></h1>
+      <p class="lede">A podcast where my two oldest kids ask me what they actually want to know about growing up, money, college, and relationships, and I answer honestly.</p>
+      <a class="btn" href="#episodes">Listen to the latest episode</a>
     </div>
+    <div class="chat" aria-label="Example question and answer">
+      <div class="msg"><small>Question from my son</small>How do I know if I'm ready to move out?</div>
+      <div class="msg"><small>Question from my daughter</small>Is it dumb to start saving at 17?</div>
+      <div class="msg dad"><small>Dad</small>Not dumb at all. It's the best head start you'll ever get. Let's talk about why.</div>
+    </div>
+  </header>
 
-    <!-- Footer -->
-    <footer class="border-t border-journal-border bg-journal-paperHighlight py-10 text-xs text-journal-muted relative z-10">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-            <div>
-                <p class="font-display font-bold text-journal-dark text-sm">Decoded by Dad</p>
-                <p class="font-serif italic mt-0.5">Written with love for Maya & Sam. Shared openly.</p>
-            </div>
-            <div class="flex items-center gap-4 font-medium">
-                <a href="#featured" class="hover:text-journal-accent transition-colors">Featured</a>
-                <span>•</span>
-                <a href="#archive" class="hover:text-journal-accent transition-colors">Archive</a>
-                <span>•</span>
-                <a href="#letter" class="hover:text-journal-accent transition-colors">Dad's Letter</a>
-            </div>
-            <p class="text-[11px] text-journal-muted/80">© 2026 Decoded by Dad. Personal Journal Archive.</p>
-        </div>
-    </footer>
+  <div class="wave" id="wave" aria-hidden="true"></div>
 
-    <!-- Application Script Logic -->
-    <script>
-        const conversations = [
-            {
-                id: 101,
-                title: "How Do I Know I'm Making the Right Decision?",
-                child: "daughter",
-                childName: "Maya (17)",
-                category: "life",
-                categoryLabel: "Life & Growth",
-                date: "October 12, 2026",
-                readTime: "5 min read",
-                summary: "Maya was overwhelmed by college major choices and fear of wasting time on the wrong decision. Here's how we reframed choice paralyses.",
-                fullTranscript: `
-                    <p class="mb-4"><strong>Maya:</strong> "Dad, everyone at school seems to know exactly what college major they want and what job they'll have at 25. I feel like I'm picking blindly. What if I make a huge mistake?"</p>
-                    <p class="mb-4"><strong>Dad:</strong> "First off, kiddo: nobody actually has it figured out at 17. Some people are just better at faking confidence."</p>
-                    <p class="mb-4"><strong>Maya:</strong> "Easy for you to say! You've had your career for 20 years."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Right, but at 18 I wanted to be a marine biologist! Life isn't a train track where you pick one destination and stay locked in. It's a series of small, reversible experiments."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "When you pick a major or a job, you aren't committing your soul forever. You're just picking the next step that feels interesting. If 2 years in you realize it isn't for you, you pivot. You haven't failed—you've just gathered data."</p>
-                    <div class="p-4 rounded-xl bg-journal-paperHighlight border border-journal-border my-4 font-sans text-xs">
-                        <strong>Dad's Takeaway:</strong> Stop trying to optimize for 10 years from now. Make the best decision with today's information and trust yourself to handle tomorrow.
-                    </div>
-                `
-            },
-            {
-                id: 102,
-                title: "How Credit Cards Work (And How Not to Burn Yourself)",
-                child: "son",
-                childName: "Sam (19)",
-                category: "practical",
-                categoryLabel: "Practical Skills",
-                date: "September 28, 2026",
-                readTime: "4 min read",
-                summary: "Sam got his first credit card offer in the mail and wanted to know if credit cards were a trap or a tool. Here was our phone talk.",
-                fullTranscript: `
-                    <p class="mb-4"><strong>Sam:</strong> "Hey Dad, I keep getting mail from banks saying I'm approved for $1,500 credit limit. Is credit bad? My roommate said never get a card."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Credit cards are like power tools, Sam. In trained hands, you build a house. In careless hands, you cut off your fingers."</p>
-                    <p class="mb-4"><strong>Sam:</strong> "So how do I use it like a tool?"</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Rule #1: Treat it like a debit card. Never buy something unless the cash is already sitting in your checking account right now."</p>
+  <section id="topics">
+    <h2>What we talk about</h2>
+    <ul class="topics">
+      <li><h3>Growing up</h3><p>Becoming an adult, making decisions, and learning from mistakes.</p></li>
+      <li><h3>Money</h3><p>Saving, spending, debt, and what nobody taught you in school.</p></li>
+      <li><h3>College</h3><p>Choosing a path, paying for it, and what comes after.</p></li>
+      <li><h3>Relationships</h3><p>Friends, dating, family, and how to treat people well.</p></li>
+    </ul>
+  </section>
 
-                    <p class="mb-4"><strong>Dad:</strong> "Rule #2: Put ONE recurring payment on it—like your phone bill or gas—and turn on Autopay for the FULL statement balance every month."</p>
+  <section id="episodes">
+    <h2>Episodes</h2>
+    <div class="eps">
+      <article class="ep">
+        <time>Coming soon</time>
+        <div><h3>Episode 1: Title goes here</h3><p>A short description of the questions answered in this episode.</p></div>
+      </article>
+      <article class="ep">
+        <time>Coming soon</time>
+        <div><h3>Episode 2: Title goes here</h3><p>A short description of the questions answered in this episode.</p></div>
+      </article>
+    </div>
+  </section>
 
-                    <div class="p-4 rounded-xl bg-journal-paperHighlight border border-journal-border my-4 font-sans text-xs">
-                        <strong>Dad's Takeaway:</strong> Outsmart the banks. They want you to carry a balance and pay 24% interest. Pay in full every single month and your credit score soars for free.
-                    </div>
-                `
-            },
-            {
-                id: 103,
-                title: "What Do I Do If My Car Check Engine Light Turns On?",
-                child: "daughter",
-                childName: "Maya (17)",
-                category: "practical",
-                categoryLabel: "Practical Skills",
-                date: "September 14, 2026",
-                readTime: "3 min read",
-                summary: "A panic text from Maya on her way home from track practice when an amber light popped up on her dashboard.",
-                fullTranscript: `
-                    <p class="mb-4"><strong>Maya (Text):</strong> "DAD EMERGENCY THE CHECK ENGINE LIGHT JUST CAME ON AM I GOING TO BLOW UP???"</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Deep breath! Is the light SOLID or FLASHING?"</p>
-                    <p class="mb-4"><strong>Maya:</strong> "It's solid amber."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Okay, solid light means: 'Hey, something needs attention soon.' Flashing red light means: 'Pull over right now.' Since it's solid, you can safely drive home."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "First check: did you tighten the gas cap fully last time you filled up? A loose gas cap causes 30% of check engine lights!"</p>
+  <section id="about">
+    <h2>About the show</h2>
+    <figure class="photo">
+      <img src="dad-and-kids.jpg" alt="Dad with his two oldest kids" hidden
+           onload="this.hidden=false;this.parentNode.querySelector('.ph').hidden=true">
+      <div class="ph">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="m21 16-5-5-8 8"/></svg>
+        <span>Your photo goes here. Save it as <b>dad-and-kids.jpg</b> next to this file.</span>
+      </div>
+    </figure>
+    <div class="about">
+      <div>
+        <p>I'm a dad of a big family. My two oldest, an 18-year-old son and a 17-year-old daughter, are at the point where the questions get bigger, and I want them to hear my answers in my own words.</p>
+        <p>I don't have everything figured out. I'll tell you what I've learned, what I'd do differently, and when the honest answer is "it depends."</p>
+      </div>
+      <div>
+        <p>Each episode starts with questions my kids send in. We talk them through, and I give my best answer.</p>
+        <p>Anyone is welcome to listen along, especially other parents and teenagers who are asking the same things.</p>
+      </div>
+    </div>
+  </section>
 
-                    <div class="p-4 rounded-xl bg-journal-paperHighlight border border-journal-border my-4 font-sans text-xs">
-                        <strong>Dad's Takeaway:</strong> Any local auto parts store (AutoZone, Advance Auto) will plug in an OBD scanner and read the code for free! Never let a mechanic charge you $100 just to diagnose a code.
-                    </div>
-                `
-            },
-            {
-                id: 104,
-                title: "Dealing with an Uncommunicative Roommate",
-                child: "son",
-                childName: "Sam (19)",
-                category: "life",
-                categoryLabel: "Life & Growth",
-                date: "August 30, 2026",
-                readTime: "6 min read",
-                summary: "Sam called frustrated because his roommate left dishes stacked in the sink for 4 days without saying a word.",
-                fullTranscript: `
-                    <p class="mb-4"><strong>Sam:</strong> "I'm about to blow up at my roommate. He leaves his dishes for days and when I ask him about it he just says 'my bad' and ignores it."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "I get why you're mad, but blowing up guarantees he goes on the defensive and nothing changes."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Instead of an aggressive text, catch him face-to-face when neither of you is rushing. Use the 'I Notice / I Feel' formula."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Say: 'Hey man, I noticed dishes have been sitting in the sink for a few days. When that happens, I get stressed trying to make dinner. Can we agree on a 24-hour rule for the sink?'"</p>
+  <section id="ask">
+    <div class="ask">
+      <div>
+        <h2>Got a question?</h2>
+        <p>Send it in and it might be answered on a future episode.</p>
+        <a class="btn" href="mailto:hello@decodedbydad.com?subject=Question%20for%20Decoded%20by%20Dad">Email your question</a>
+      </div>
+      <svg class="mic" viewBox="0 0 64 96" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" aria-hidden="true">
+        <rect x="20" y="4" width="24" height="46" rx="12" fill="currentColor" stroke="none"/>
+        <path d="M10 40v6a22 22 0 0 0 44 0v-6M32 68v20M20 90h24"/>
+      </svg>
+    </div>
+  </section>
 
-                    <div class="p-4 rounded-xl bg-journal-paperHighlight border border-journal-border my-4 font-sans text-xs">
-                        <strong>Dad's Takeaway:</strong> Address issues early before resentment builds. Talk about the shared space, not his character.
-                    </div>
-                `
-            },
-            {
-                id: 105,
-                title: "How to Ask for Help at Your First Real Job",
-                child: "son",
-                childName: "Sam (19)",
-                category: "life",
-                categoryLabel: "Life & Growth",
-                date: "August 12, 2026",
-                readTime: "4 min read",
-                summary: "Sam felt embarrassed to ask his manager a basic question during week two of his internship.",
-                fullTranscript: `
-                    <p class="mb-4"><strong>Sam:</strong> "I've been staring at this spreadsheet for two hours. I don't understand what my boss wants, but if I ask him, he'll think I'm dumb."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "You know what bosses actually hate? Someone who wastes 5 hours pretending to know something instead of asking a 2-minute question."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Here is the magic formula: Try to solve it for 15 minutes. If you're still stuck, go to your boss and say: 'I tried X and Y, but I want to make sure I'm on the right track before moving forward. Could you clarify Z?'"</p>
-
-                    <div class="p-4 rounded-xl bg-journal-paperHighlight border border-journal-border my-4 font-sans text-xs">
-                        <strong>Dad's Takeaway:</strong> Show that you tried first! People love helping people who show effort.
-                    </div>
-                `
-            },
-            {
-                id: 106,
-                title: "Handling Comparison & Feeling Behind",
-                child: "daughter",
-                childName: "Maya (17)",
-                category: "life",
-                categoryLabel: "Life & Growth",
-                date: "July 29, 2026",
-                readTime: "5 min read",
-                summary: "A quiet talk on the porch after Maya felt down seeing classmates highlight reels on social media.",
-                fullTranscript: `
-                    <p class="mb-4"><strong>Maya:</strong> "It feels like everyone on my feed is doing amazing internships, traveling, or having perfect lives."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "You're comparing your behind-the-scenes footage to everybody else's highlight reel."</p>
-                    <p class="mb-4"><strong>Dad:</strong> "Nobody posts their arguments, their failed tests, or their lonely Friday nights. Run your own race at your own pace."</p>
-
-                    <div class="p-4 rounded-xl bg-journal-paperHighlight border border-journal-border my-4 font-sans text-xs">
-                        <strong>Dad's Takeaway:</strong> Comparison is the thief of joy. Measure your progress against who you were yesterday, not against someone else's curated feed.
-                    </div>
-                `
-            }
-        ];
-
-        let currentFilter = 'all';
-        let searchQuery = '';
-
-        function renderArchive() {
-            const grid = document.getElementById('archiveGrid');
-            const noResults = document.getElementById('noResultsState');
-
-            const filtered = conversations.filter(item => {
-                // Filter tag match
-                let matchFilter = false;
-                if (currentFilter === 'all') matchFilter = true;
-                else if (currentFilter === 'daughter') matchFilter = (item.child === 'daughter');
-                else if (currentFilter === 'son') matchFilter = (item.child === 'son');
-                else if (currentFilter === 'practical') matchFilter = (item.category === 'practical');
-                else if (currentFilter === 'life') matchFilter = (item.category === 'life');
-
-                // Search query match
-                const matchSearch = searchQuery === '' || 
-                    item.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
-                    item.summary.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                    item.childName.toLowerCase().includes(searchQuery.toLowerCase());
-
-                return matchFilter && matchSearch;
-            });
-
-            if (filtered.length === 0) {
-                grid.innerHTML = '';
-                noResults.classList.remove('hidden');
-                return;
-            } else {
-                noResults.classList.add('hidden');
-            }
-
-            grid.innerHTML = filtered.map(item => `
-                <div onclick="openModalById(${item.id})" class="bg-journal-card border border-journal-border rounded-2xl p-6 hover:border-journal-accent/60 hover:shadow-md transition-all duration-200 cursor-pointer flex flex-col justify-between group">
-                    <div>
-                        <!-- Header Badges -->
-                        <div class="flex items-center justify-between mb-3 text-xs">
-                            <span class="px-2.5 py-0.5 rounded-full font-semibold ${item.child === 'daughter' ? 'bg-journal-daughter/10 text-journal-daughter' : 'bg-journal-son/10 text-journal-son'}">
-                                ${item.childName}
-                            </span>
-                            <span class="text-journal-muted font-serif italic text-[11px]">${item.date}</span>
-                        </div>
-
-                        <!-- Title -->
-                        <h3 class="font-display font-bold text-lg text-journal-dark group-hover:text-journal-accent transition-colors leading-snug mb-2">
-                            ${item.title}
-                        </h3>
-
-                        <!-- Summary Excerpt -->
-                        <p class="font-serif text-journal-muted text-xs sm:text-sm leading-relaxed mb-4">
-                            "${item.summary}"
-                        </p>
-                    </div>
-
-                    <!-- Read link footer -->
-                    <div class="pt-3 border-t border-journal-border/60 flex items-center justify-between text-xs font-semibold text-journal-accent">
-                        <span>Read Dialogue</span>
-                        <i class="fa-solid fa-chevron-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function setFilter(filterType) {
-            currentFilter = filterType;
-            
-            // Toggle active pill button styling
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.className = "filter-btn text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-border bg-journal-card text-journal-muted hover:border-journal-accent hover:text-journal-accent transition-all shrink-0";
-            });
-
-            event.target.className = "filter-btn active text-xs font-medium px-3.5 py-1.5 rounded-full border border-journal-dark bg-journal-dark text-white transition-all shrink-0";
-
-            renderArchive();
-        }
-
-        function handleSearch(e) {
-            searchQuery = e.target.value.trim();
-            const clearBtn = document.getElementById('clearSearchBtn');
-            if (searchQuery.length > 0) {
-                clearBtn.classList.remove('hidden');
-            } else {
-                clearBtn.classList.add('hidden');
-            }
-            renderArchive();
-        }
-
-        function clearSearch() {
-            searchQuery = '';
-            const input = document.getElementById('journalSearchInput');
-            input.value = '';
-            document.getElementById('clearSearchBtn').classList.add('hidden');
-            renderArchive();
-        }
-
-        function openModalById(id) {
-            const item = conversations.find(c => c.id === id);
-            if (!item) return;
-
-            const modal = document.getElementById('dialogueModal');
-            const container = document.getElementById('modalContainer');
-            const content = document.getElementById('modalContent');
-
-            content.innerHTML = `
-                <div class="flex items-center gap-2 mb-3 text-xs">
-                    <span class="px-2.5 py-0.5 rounded-full font-semibold ${item.child === 'daughter' ? 'bg-journal-daughter/10 text-journal-daughter' : 'bg-journal-son/10 text-journal-son'}">
-                        ${item.childName}
-                    </span>
-                    <span class="text-journal-muted">• ${item.categoryLabel}</span>
-                    <span class="text-journal-muted">• ${item.readTime}</span>
-                </div>
-
-                <h2 class="font-display font-bold text-2xl sm:text-3xl text-journal-dark mb-2">
-                    ${item.title}
-                </h2>
-
-                <p class="text-xs text-journal-muted font-serif italic mb-6">Recorded on ${item.date}</p>
-
-                <div class="font-serif text-journal-dark text-sm leading-relaxed border-t border-journal-border pt-6 space-y-4">
-                    ${item.fullTranscript}
-                </div>
-            `;
-
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
-
-            setTimeout(() => {
-                container.classList.remove('scale-95', 'opacity-0');
-                container.classList.add('scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('dialogueModal');
-            const container = document.getElementById('modalContainer');
-
-            container.classList.remove('scale-100', 'opacity-100');
-            container.classList.add('scale-95', 'opacity-0');
-
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.body.style.overflow = '';
-            }, 200);
-        }
-
-        function closeModalOnBackdrop(e) {
-            if (e.target.id === 'dialogueModal') {
-                closeModal();
-            }
-        }
-
-        function updatePreview() {
-            const name = document.getElementById('askName').value.trim() || 'Curious Reader';
-            const who = document.getElementById('askWho').value;
-            const question = document.getElementById('askQuestion').value.trim();
-
-            const previewText = document.getElementById('previewText');
-            const previewAuthor = document.getElementById('previewAuthor');
-            const previewTag = document.getElementById('previewTag');
-
-            previewAuthor.textContent = name;
-            
-            if (who === 'Daughter') {
-                previewTag.textContent = "Maya (17)";
-                previewTag.className = "font-bold text-journal-daughter";
-            } else if (who === 'Son') {
-                previewTag.textContent = "Sam (19)";
-                previewTag.className = "font-bold text-journal-son";
-            } else {
-                previewTag.textContent = "General Archive";
-                previewTag.className = "font-bold text-journal-accent";
-            }
-
-            if (question.length > 0) {
-                previewText.textContent = `"${question}"`;
-                previewText.classList.remove('italic', 'text-journal-muted');
-                previewText.classList.add('text-journal-dark');
-            } else {
-                previewText.textContent = '"Your question will appear here as you type..."';
-                previewText.classList.add('italic', 'text-journal-muted');
-            }
-        }
-
-        function handleFormSubmit(e) {
-            e.preventDefault();
-            document.getElementById('askForm').reset();
-            updatePreview();
-
-            const box = document.getElementById('formSubmittedBox');
-            box.classList.remove('hidden');
-
-            setTimeout(() => {
-                box.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-
-        // Initialize archive grid on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            renderArchive();
-        });
-    </script>
+  <footer>&copy; <span id="y">2026</span> Decoded by Dad &middot; decodedbydad.com</footer>
+</div>
+<script>
+(function(){var w=document.getElementById("wave"),n=64;
+for(var i=0;i<n;i++){var h=18+Math.abs(Math.sin(i*.45)*50+Math.sin(i*1.3)*25+Math.cos(i*.2)*10);
+var b=document.createElement("i");b.style.height=Math.min(h,100)+"%";w.appendChild(b)}})();
+document.getElementById("y").textContent=new Date().getFullYear()</script>
 </body>
 </html>

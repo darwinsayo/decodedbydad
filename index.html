@@ -27,7 +27,7 @@ nav a{text-decoration:none;margin-left:1.25rem}
 nav a:hover{text-decoration:underline}
 h1,h2,h3{font-family:var(--sans);line-height:1.05;letter-spacing:-.03em;margin:0}
 .hero{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:center;padding:3rem 0 5rem}
-h1{font-size:clamp(3rem,8vw,5.5rem);font-weight:900}
+h1{font-size:clamp(2.6rem,8vw,5.5rem);font-weight:900;line-height:1.25}
 h1 span{color:#17232e;background:var(--hi);padding:0 .12em;border-radius:.12em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
 .lede{margin:1.5rem 0 2rem;max-width:30rem;color:var(--muted)}
 .btn{display:inline-block;font-family:var(--sans);font-weight:700;background:var(--ink);color:var(--paper);padding:.85rem 1.4rem;border-radius:.4rem;text-decoration:none}
@@ -60,6 +60,10 @@ nav a.logo{display:flex;align-items:center;gap:.6rem;margin-left:0;font-size:1.2
 nav a.logo:hover{text-decoration:none}
 nav a.logo svg{width:2.6rem;height:2.6rem;flex:none}
 nav a.logo em{font-style:normal;font-weight:500;color:var(--muted)}
+.faith{border-left:6px solid var(--hi);padding:.2rem 0 .2rem 1.25rem;margin:0 0 2.5rem;font-size:1.3rem;line-height:1.5;max-width:42rem}
+.saint blockquote{margin:0 auto;max-width:40rem;text-align:center}
+.saint blockquote p{font-size:clamp(1.5rem,3.5vw,2.1rem);line-height:1.4;font-style:italic;margin:0 0 1rem}
+.saint blockquote footer{padding:0;border:0;font-family:var(--sans);font-size:1rem;color:var(--muted)}
 .wave{display:flex;align-items:center;justify-content:space-between;height:5rem;gap:3px;margin:0 0 1rem}
 .wave i{flex:1;background:var(--teal);border-radius:2px;opacity:.85}
 .wave i:nth-child(7n){background:var(--hi);opacity:1}
@@ -108,6 +112,7 @@ nav a.logo em{font-style:normal;font-weight:500;color:var(--muted)}
   <section id="topics">
     <h2>What we talk about</h2>
     <ul class="topics">
+      <li><h3>Faith</h3><p>Living as Catholics in a world that doesn't always make it easy.</p></li>
       <li><h3>Growing up</h3><p>Becoming an adult, making decisions, and learning from mistakes.</p></li>
       <li><h3>Money</h3><p>Saving, spending, debt, and what nobody taught you in school.</p></li>
       <li><h3>College</h3><p>Choosing a path, paying for it, and what comes after.</p></li>
@@ -139,6 +144,7 @@ nav a.logo em{font-style:normal;font-weight:500;color:var(--muted)}
         <span>Your photo goes here. Save it as <b>dad-and-kids.jpg</b> next to this file.</span>
       </div>
     </figure>
+    <p class="faith">We are a devoted Catholic family, and our faith is the foundation of our home. It guides every answer you'll hear on this show.</p>
     <div class="about">
       <div>
         <p>I'm a dad of a big family. My two oldest, an 18-year-old son and a 17-year-old daughter, are at the point where the questions get bigger, and I want them to hear my answers in my own words.</p>
@@ -149,6 +155,13 @@ nav a.logo em{font-style:normal;font-weight:500;color:var(--muted)}
         <p>Anyone is welcome to listen along, especially other parents and teenagers who are asking the same things.</p>
       </div>
     </div>
+  </section>
+
+  <section class="saint">
+    <blockquote>
+      <p>&ldquo;You have made us for yourself, O Lord, and our heart is restless until it rests in you.&rdquo;</p>
+      <footer>St. Augustine, <cite>Confessions</cite></footer>
+    </blockquote>
   </section>
 
   <section id="ask">
